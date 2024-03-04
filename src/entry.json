@@ -1,0 +1,39 @@
+[
+  {
+  "id": 1,
+  "title": "this is test title",
+  "entryText": "this is a test :)",
+  "app": false,
+  "tags": 
+    [
+      "blog",
+      "programming",
+      "react"
+    ]
+  },
+
+  {
+  "id": 2,
+  "title": "this is test title 2",
+  "entryText": "this is a second :)",
+  "app": false,
+  "tags": 
+    [
+      "data",
+      "maps"
+    ]
+  },
+
+  {
+  "id": 3,
+  "title": "MapBox Beginner App",
+  "entryText": "mapbox app preview",
+  "app": true,
+  "tags": 
+    [
+      "data",
+      "maps",
+      "mapbox"
+    ]
+  }
+]
