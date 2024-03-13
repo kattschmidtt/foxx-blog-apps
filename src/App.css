@@ -17,6 +17,7 @@ body {
   height: 100%;
 }
 
+
 .navbar {
   height: 60px;
   background-color: #266DD3;
@@ -34,7 +35,7 @@ body {
   display: flex;
   justify-content: space-between;
   color: white;
-  margin-left: -65%;
+  margin-left: -62%;
 }
 
 .nav-elements {
@@ -71,4 +72,10 @@ body {
   width: 100%;
   height: 2px;
   background-color: #574c4c;
+}
+
+.map-container {
+  position: absolute;
+  height:500px;
+  width:50%;
 }

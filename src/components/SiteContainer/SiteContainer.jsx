@@ -10,7 +10,6 @@ import MapboxComponent from '../Apps/MapboxApp/MapboxApp';
 const SiteContainer = () => {
   return (
     <Container>
-      <Navbar />
       <Grid container spacing={2}>
         <Grid item xs={8}>
           <EntryCard entryList={entry} />

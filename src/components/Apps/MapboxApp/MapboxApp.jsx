@@ -1,10 +1,11 @@
 import React, {useEffect, useState, useRef} from "react";
-
+import { Container, Grid } from "@mui/material";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 import { environment } from "../../../env.js";
 import '../../../App.css';
+
 
 mapboxgl.accessToken = environment.mapbox.accessToken;
 
@@ -12,11 +13,22 @@ const MapboxComponent = () => {
   const mapContainerRef = useRef(null);
   const map = useRef(null);
 
-  const [lng] = useState(-97.7431);
-  const [lat] = useState(30.2672);
+  const [lng, setLng] = useState(-97.7431);
+  const [lat, setLat] = useState(30.2672);
   const [zoom] = useState(10);
 
   useEffect(() => {
+    // Get real life location
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        setLng(pos.coords.longitude);
+        setLat(pos.coords.latitude);
+      })
+    } 
+    else {
+      console.error('idk something went wrong with geolocation');
+    }
+
     map.current = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/streets-v11',
@@ -80,7 +92,14 @@ const MapboxComponent = () => {
   },[lng, lat, zoom]);
 
   return (
-    <div className="map-container" ref={mapContainerRef} />    
+    <Container>
+      <Grid container spacing={2}>
+        <Grid item>
+          <div className="container map-container" ref={mapContainerRef}/> 
+        </Grid>
+      </Grid>
+    </Container>
+       
   )
 };
 
