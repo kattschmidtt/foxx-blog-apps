@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Posts from '../components/Blog/Posts'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <Posts />
   )
 }
 

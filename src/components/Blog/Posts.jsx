@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import PostItem from '../components/Blog/PostItem';
+import PostItem from './PostItem';
 
-import { dummy_posts } from '../entry';
+import { dummy_posts } from '../../entry';
 
-const CategoryPosts = () => {
+const Posts = () => {
 
   const [posts, setPosts] = useState(dummy_posts);
 
@@ -20,7 +20,7 @@ const CategoryPosts = () => {
                 title={title}
                 entryText={entryText}
                 app={app}
-                tags={tags}
+                tag={tags}
                 postInfo={postInfo}/>
           ))
         :
@@ -31,4 +31,4 @@ const CategoryPosts = () => {
   )
 }
 
-export default CategoryPosts
+export default Posts
