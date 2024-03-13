@@ -13,6 +13,7 @@ import Dashboard from './pages/Dashboard';
 import Logout from './pages/Logout';
 import ErrorPage from './pages/ErrorPage';
 import Apps from './pages/Apps';
+import Register from './pages/Register';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       {path: "posts/categories/:categories", element: <CategoryPosts />},
       {path: "myposts/:id", element: <Dashboard />},
       {path: "apps", element: <Apps />},
+      {path: "register", element: <Register />},
       {path: "logout", element: <Logout />},
     ]
   }

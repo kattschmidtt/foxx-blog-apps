@@ -12,7 +12,7 @@ const Posts = () => {
       <div className="container posts-container">
         {
           posts.length > 0 ? (posts.map(
-            ({id, thumbnail, title, entryText, app, tags, postInfo}) => 
+            ({id, thumbnail, title, entryText, app, category, postInfo}) => 
               <PostItem 
                 key={id} 
                 postId={id} 
@@ -20,7 +20,7 @@ const Posts = () => {
                 title={title}
                 entryText={entryText}
                 app={app}
-                tag={tags}
+                category={category}
                 postInfo={postInfo}/>
           ))
         :
