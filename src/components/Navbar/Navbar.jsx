@@ -1,30 +1,28 @@
 import React from "react";
 import PeepoComfyLogo from '../../peepoComfyLogo.png';
-
+import { Link } from "react-router-dom";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { IconButton } from "@mui/material";
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
-      <div className="container">
-        <div>
-          <img className="logo" src={PeepoComfyLogo} />
-        </div>
-        <div className="foxx-label">
-          Foxx
-        </div>
-        <div className="nav-elements">
-          <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/blog">Blog</a>
-            </li>
-            <li>
-              <a href="/data">Data</a>
-            </li>
-          </ul>
-        </div>
+    <nav>
+      <div className="container nav-container">
+        <Link to="/" className="nav-logo">
+          <img src={PeepoComfyLogo} alt="" />
+        </Link>
+        <ul className="nav-menu">
+          <li> <Link to="/profile">User</Link></li>
+          <li> <Link to="/create">Create Post</Link></li>
+          <li> <Link to="/apps">Apps</Link></li>
+          <li> <Link to="/logout">Logout</Link></li>
+          <li> 
+            <IconButton aria-label="more" size="small">
+              <MoreVertIcon fontSize="inherit" />
+            </IconButton>
+          </li>
+        </ul>
+        
       </div>
     </nav>
   )
