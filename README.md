@@ -7,6 +7,7 @@ The purpose of this blog as a way to keep track of programming projects that I c
 
 In order to get mapbox running register on this [website](https://mapbox.com) and plug in your access token into the env.js file under the accessToken value.
 
+To integrate the backend with the front end go to the [mongodb](mongodb.com) and register. Then go to the server/.env file and add your username and password to the MONGO_URI value.
 
 ## Run Locally
 
@@ -33,8 +34,11 @@ Start the server
 ```bash
   npm start
 ```
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Runs the front end portion of the app in the development mode.\
+
+Open [http://localhost:3000](http://localhost:3000) to view frontend in your browser.\
+Open [http://localhost:5000](http://localhost:5000) to view api in your browser.
+
 ## Acknowledgements
 
  - [Mapbox guide](https://medium.com/@gisjohnecs/part-1-web-mapping-with-mapbox-gl-react-js-7d11b50d86ec)
