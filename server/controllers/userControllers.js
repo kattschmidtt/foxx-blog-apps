@@ -1,5 +1,6 @@
 const User = require('../models/userModel');
-
+const fs = require('fs');
+const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs');
 const HttpError = require("../models/errorModel");
 
@@ -36,16 +37,75 @@ const registerUser = async (req, res, next) => {
   }
 } 
 
-const loginUser = (req, res, next) => {
-  res.json("Login User")
+const loginUser = async (req, res, next) => {
+  try {
+    const {email, password} = req.body;
+    if(!email || !password) {
+      return next(new HttpError("Fill in all fields.", 422));
+    }
+
+    const newEmail = email.toLowerCase();
+    const user = await User.findOne({email: newEmail});
+
+    if(!user) {
+      return next(new HttpError("Invalid credentials", 422));
+    }
+
+    const comparePassword = await bcrypt.compare(password, user.password);
+    if(!comparePassword) {
+      return next(new HttpError("Invalid credentials.", 422));
+    }
+
+    const {_id: id, name} = user;
+    const token = jwt.sign({id, name}, process.env.JWT_SECRET, {expiresIn: "1d"});
+
+    res.status(200).json({token, id, name});
+  } catch (err) {
+    return next(new HttpError("Login failed. Please check credentials", 422))
+  }
 } 
 
-const getUser = (req, res, next) => {
-  res.json('Get User Details')
+const getUser = async (req, res, next) => {
+  try {
+    const {id} = req.params;
+    const user = await User.findById(id).select('-password');
+    if(!user) {
+      return next(new HttpError("User not found", 404));
+    }
+    res.status(200).json(user);
+  } catch (err) {
+    return next(new HttpError(err));
+  }
 }
 
-const changeAvatar = (req, res, next) => {
-  res.json('Change Avatar')
+const changeAvatar = async (req, res, next) => {
+  try {
+    if(!req.files.avatar) {
+      return next(new HttpError("Please choose an image.", 422));
+    }
+
+    const user = await User.findById(req.user.id);
+    if(user.avatar) {
+      fs.unlink(path.join(__dirname, '..', 'uploads', user.avatar), (err) => {
+        if(err) {
+          return next(new HttpError(err));
+        }
+      })
+    }
+
+    const {avatar} = req.files;
+    if(avatar.size > 50000) {
+      return next(new HttpError("Profile too big. Should be less than 500kb"), 422);
+    }
+
+    let fileName;
+    fileName = avatar.name;
+    let splittedFilename = fileName.split('.');
+    let newFileName = splittedFilename;
+
+  } catch (err) {
+    return next(new HttpError(err))
+  }
 }
 
 const editUser = (req, res, next) => {
