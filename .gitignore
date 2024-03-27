@@ -23,5 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 /src/env.js
-/server/.env
+server/.env
 package-lock.json
