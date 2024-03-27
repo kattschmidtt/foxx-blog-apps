@@ -124,8 +124,41 @@ const changeAvatar = async (req, res, next) => {
   }
 }
 
-const editUser = (req, res, next) => {
-  res.json('Edit User Details')
+const editUser = async (req, res, next) => {
+  try {
+    const {name, email, currentPassword, newPassword, newConfirmPassword} = req.body;
+    if (!name || !email || !currentPassword || !newPassword || !newConfirmPassword) {
+      return next(new HttpError("Fill in all fields", 422));
+    }
+
+    const user = await User.findById(req.user.id);
+    if(!user) {
+      return next(new HttpError("User not found.", 403));
+    }
+
+    const emailExists = await User.findOne({email});
+    if(emailExists && (emailExists._id != req.user.id)) {
+      return next(new HttpError("Email already exists.", 422));
+    }
+
+    const validateUserPassword = await bcrypt.compare(currentPassword, user.password);
+    if(!validateUserPassword) {
+      return next(new HttpError("Invalid current password", 422));
+    }
+
+    if(newPassword !== newConfirmPassword) {
+      return next(new HttpError("New passwords do not match.", 422));
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(newPassword, salt);
+
+    const newInfo = await User.findByIdAndUpdate(req.user.id, {name, email, password: hash}, {new: true});
+    res.status(200).json(newInfo);
+    
+  } catch (err) {
+    return next(new HttpError(err))
+  }
 }
 
 module.exports = {registerUser, loginUser, getUser, changeAvatar, editUser}
