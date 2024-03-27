@@ -1,9 +1,13 @@
-const { Router } = require('express')
+const { Router } = require('express');
+
+const {registerUser, loginUser, getUser, changeAvatar, editUser} = require('../controllers/userControllers');
 
 const router = Router();
 
-router.get('/', (req, res, next) => {
-  res.json("this is the user route")
-})
+router.post('/register', registerUser)
+router.post('/login', loginUser)
+router.get('/:id', getUser)
+router.post('/change-avatar', changeAvatar)
+router.patch('/edit-user', editUser)
 
 module.exports = router
