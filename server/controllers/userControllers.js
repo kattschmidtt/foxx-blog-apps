@@ -108,7 +108,6 @@ const changeAvatar = async (req, res, next) => {
     let newFileName = splittedFilename[0] + uuid() + '.' + splittedFilename[splittedFilename.length - 1];
     
     avatar.mv(path.join(__dirname, '..', 'uploads', newFileName), async (err) => {
-      console.log(path)
       if(err) {
         return next(new HttpError(err));
       }
