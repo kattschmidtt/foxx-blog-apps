@@ -16,7 +16,7 @@ const registerUser = async (req, res, next) => {
     if(emailExists) {
       return next(new HttpError("Email already exists", 422));
     }
-
+  
     if((password.trim()).length < 6) {
       return next(new HttpError("Password should be at least 6 characters", 422));
     }
@@ -29,7 +29,7 @@ const registerUser = async (req, res, next) => {
     const hashedPassword = await bcrypt.hash(password, salt);
     const newUser = await User.create({name, email: newEmail, password: hashedPassword});
     
-    res.status(201).json(newUser);
+    res.status(201).json(`New user ${newUser.email} registered.`);
 
   } catch (err) {
     return next(new HttpError("User registration failed.", 422));
