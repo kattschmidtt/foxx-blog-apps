@@ -26,7 +26,7 @@ const createPost = async (req, res, next) => {
       if(err) {
         return next(new HttpError(err));
       } else {
-        const newPost = await Post.create({title, category, description, thumbnail: newFileName, creator: req.user.id});
+        const newPost = await Post.create({title, category, description, thumbnail: newFileName, creator: req.user.id, createdOn: new Date().toLocaleDateString()});
         if(!newPost) {
           return next(new HttpError("Post couldn't be created.", 422));
         }

@@ -2,15 +2,27 @@ import { Chip } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const PostItem = ({postId, thumbnail, title, entryText, app, category, postInfo}) => {
+const PostItem = ({postId, thumbnail, title, description, app, category, createdAt}) => {
 
   const chipColors = {
-    blog: 'primary',
-    programming: 'secondary',
-    react: 'success',
-    data: 'error',
-    app: 'warning',
+    Blog: 'primary',
+    Programming: 'secondary',
+    React: 'success',
+    Data: 'error',
+    App: 'warning',
   };
+
+  const formatDate = dateString => {
+    const date = new Date(dateString);
+    const day = ('0' + date.getDate()).slice(-2);
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const year = date.getFullYear();
+    const hour = ('0' + date.getHours()).slice(-2);
+    const minute = ('0' + date.getMinutes()).slice(-2);
+    const second = ('0' + date.getSeconds()).slice(-2);
+    
+    return `${day}/${month}/${year} ${hour}:${minute}:${second}`;
+  }
 
   return (
     <article className="post">
@@ -21,7 +33,7 @@ const PostItem = ({postId, thumbnail, title, entryText, app, category, postInfo}
         <Link to={`/posts/${postId}`}>
           <h3>{title.length > 30 ? title.substring(0, 30) + '...' : title}</h3>
         </Link>
-        <p>{entryText.length > 145 ? entryText.substring(0, 145) + '...' : entryText}</p>
+        <p>{description.length > 145 ? description.substring(0, 145) + '...' : description}</p>
         <br/>
         <Link to={`posts/categories/${category}`}>
           <Chip 
@@ -31,7 +43,7 @@ const PostItem = ({postId, thumbnail, title, entryText, app, category, postInfo}
         </Link>
       </div>
       <div className="post-footer">
-        Posted on: {postInfo}
+        Posted on: {formatDate(createdAt)}
       </div>
     </article>
   )
