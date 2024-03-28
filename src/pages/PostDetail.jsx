@@ -41,7 +41,7 @@ const PostDetail = () => {
           </div>
           
         </div>
-        <p>{post.description}</p>
+        <p dangerouslySetInnerHTML={{__html: post.description}} />
         <div className="post-footer">
           Posted on: {formatDate(post.createdAt)}
         </div>
