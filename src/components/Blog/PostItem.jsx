@@ -1,6 +1,7 @@
 import { Chip } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { formatDate } from '../../utils'
 
 const PostItem = ({postId, thumbnail, title, description, app, category, createdAt}) => {
 
@@ -12,22 +13,10 @@ const PostItem = ({postId, thumbnail, title, description, app, category, created
     App: 'warning',
   };
 
-  const formatDate = dateString => {
-    const date = new Date(dateString);
-    const day = ('0' + date.getDate()).slice(-2);
-    const month = ('0' + (date.getMonth() + 1)).slice(-2);
-    const year = date.getFullYear();
-    const hour = ('0' + date.getHours()).slice(-2);
-    const minute = ('0' + date.getMinutes()).slice(-2);
-    const second = ('0' + date.getSeconds()).slice(-2);
-    
-    return `${day}/${month}/${year} ${hour}:${minute}:${second}`;
-  }
-
   return (
     <article className="post">
       <div className="post-thumbnail">
-        <img src={thumbnail} alt={title} />
+        <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${thumbnail}`} alt={title} />
       </div>
       <div className="post-content">
         <Link to={`/posts/${postId}`}>
