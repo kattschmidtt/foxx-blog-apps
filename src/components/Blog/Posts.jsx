@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import PostItem from './PostItem';
 import { useNavigate } from 'react-router-dom';
-import { dummy_posts } from '../../entry';
 import { UserContext } from '../../context/userContext';
 import CircularProgress from '@mui/material/CircularProgress';
 import axios from 'axios';
