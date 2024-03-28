@@ -13,11 +13,12 @@ import Logout from './pages/Logout';
 import ErrorPage from './pages/ErrorPage';
 import Apps from './pages/Apps';
 import Register from './pages/Register';
+import UserProvider from './context/userContext';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <SiteContainer />,
+    element: <UserProvider><SiteContainer /></UserProvider>,
     errorElement: <ErrorPage />,
     children: [
       {index: true, element: <Home />},

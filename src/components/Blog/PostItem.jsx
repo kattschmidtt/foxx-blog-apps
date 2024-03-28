@@ -1,27 +1,28 @@
 import { Chip } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { formatDate } from '../../utils'
 
-const PostItem = ({postId, thumbnail, title, entryText, app, category, postInfo}) => {
+const PostItem = ({postId, thumbnail, title, description, app, category, createdAt}) => {
 
   const chipColors = {
-    blog: 'primary',
-    programming: 'secondary',
-    react: 'success',
-    data: 'error',
-    app: 'warning',
+    Blog: 'primary',
+    Programming: 'secondary',
+    React: 'success',
+    Data: 'error',
+    App: 'warning',
   };
 
   return (
     <article className="post">
       <div className="post-thumbnail">
-        <img src={thumbnail} alt={title} />
+        <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${thumbnail}`} alt={title} />
       </div>
       <div className="post-content">
         <Link to={`/posts/${postId}`}>
           <h3>{title.length > 30 ? title.substring(0, 30) + '...' : title}</h3>
         </Link>
-        <p>{entryText.length > 145 ? entryText.substring(0, 145) + '...' : entryText}</p>
+        <p>{description.length > 145 ? description.substring(0, 145) + '...' : description}</p>
         <br/>
         <Link to={`posts/categories/${category}`}>
           <Chip 
@@ -31,7 +32,7 @@ const PostItem = ({postId, thumbnail, title, entryText, app, category, postInfo}
         </Link>
       </div>
       <div className="post-footer">
-        Posted on: {postInfo}
+        Posted on: {formatDate(createdAt)}
       </div>
     </article>
   )
