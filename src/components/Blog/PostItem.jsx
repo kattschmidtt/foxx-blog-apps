@@ -13,6 +13,8 @@ const PostItem = ({postId, thumbnail, title, description, app, category, created
     App: 'warning',
   };
 
+  const shortDescription = description.length > 145 ? description.substring(0, 145) + '...' : description;
+  
   return (
     <article className="post">
       <div className="post-thumbnail">
@@ -22,7 +24,7 @@ const PostItem = ({postId, thumbnail, title, description, app, category, created
         <Link to={`/posts/${postId}`}>
           <h3>{title.length > 30 ? title.substring(0, 30) + '...' : title}</h3>
         </Link>
-        <p>{description.length > 145 ? description.substring(0, 145) + '...' : description}</p>
+        <p dangerouslySetInnerHTML={{__html: shortDescription}}/>
         <br/>
         <Link to={`posts/categories/${category}`}>
           <Chip 

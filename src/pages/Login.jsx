@@ -47,7 +47,7 @@ const Login = () => {
           <input type="text" placeholder='Email' name='email' value={userData.email} onChange={changeInputHandler}/>
           <input type="password" placeholder='Password' name='password' value={userData.password} onChange={changeInputHandler}/>
           <Divider variant="middle" />
-          <button type='submit' className='btn-login'>Register</button>
+          <button type='submit' className='btn-login'>Login</button>
         </form>
         <small>Don't have an account?<Link to="/register"> Register</Link></small>
       </div>

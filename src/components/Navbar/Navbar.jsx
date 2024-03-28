@@ -17,7 +17,7 @@ const Navbar = () => {
           <img src={PeepoComfyLogo} alt="" />
         </Link>
         {currentUser?.id && <ul className="nav-menu">
-          <li> <Link to="/profile">User</Link></li>
+          <li> <Link to="/profile">{currentUser?.name}</Link></li>
           <li> <Link to="/create">Create Post</Link></li>
           <li> <Link to="/apps">Apps</Link></li>
           <li> <Link to="/logout">Logout</Link></li>
