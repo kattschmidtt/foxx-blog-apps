@@ -9,7 +9,6 @@ import Login from './pages/Login';
 import UserProfile from './pages/UserProfile';
 import CreatePost from './pages/CreatePost';
 import CategoryPosts from './pages/CategoryPosts';
-import Dashboard from './pages/Dashboard';
 import Logout from './pages/Logout';
 import ErrorPage from './pages/ErrorPage';
 import Apps from './pages/Apps';
@@ -27,7 +26,6 @@ const router = createBrowserRouter([
       {path: "profile", element: <UserProfile />},
       {path: "create", element: <CreatePost />},
       {path: "posts/categories/:categories", element: <CategoryPosts />},
-      {path: "myposts/:id", element: <Dashboard />},
       {path: "apps", element: <Apps />},
       {path: "register", element: <Register />},
       {path: "logout", element: <Logout />},

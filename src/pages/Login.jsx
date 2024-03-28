@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Alert, Divider } from '@mui/material'
 
 const Login = () => {
@@ -9,10 +9,17 @@ const Login = () => {
     password: '',
   })
 
+  const [error, setError] = useState('')
+  const navigate = useNavigate()
+
   const changeInputHandler = e => {
     setUserData(prevState => {
       return {...prevState, [e.target.name]: e.target.value}
     })
+  }
+
+  const loginUser = async (e) => {
+
   }
 
   return (
@@ -20,7 +27,7 @@ const Login = () => {
       <div className="container">
         <h2 className='center'>Login</h2>
         <form className="form login-form">
-          <Alert severity='error'>This is an error message</Alert>
+          { error && <Alert severity='error'>This is an error message</Alert> }
           <input type="text" placeholder='Email' name='email' value={userData.email} onChange={changeInputHandler}/>
           <input type="password" placeholder='Password' name='password' value={userData.password} onChange={changeInputHandler}/>
           <Divider variant="middle" />
