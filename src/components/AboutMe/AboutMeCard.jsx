@@ -23,7 +23,7 @@ const AboutMeCard = () => {
           I enjoy video games, programming, and music. I have a cat named Miso who is 3 1/2 years old. <br />
           My favorite video game is World of Warcraft. <br />
           My favorite programming language is between Javascript or Typescript <br />
-          My favorite band at the moment is Palaye Royale. <br />
+          test <br />
         </p>
         <div className='about-me-icons'>
           <Tooltip 
