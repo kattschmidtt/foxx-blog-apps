@@ -8,12 +8,58 @@ import {
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 import React from 'react';
 
 const AboutMeCard = () => {
   return (
-    <Card sx={{ 
+    <div className='about-me-card-container'>
+      <div className='about-me-inner-card'>
+        <h2 className='about-me-header'>About Me</h2>
+        <Divider variant='middle' />
+        <p className='about-me-details'>
+          Hi, my name is Kat!<br/>
+          I enjoy video games, programming, and music. I have a cat named Miso who is 3 1/2 years old. <br />
+          My favorite video game is World of Warcraft. <br />
+          My favorite programming language is between Javascript or Typescript <br />
+          My favorite band at the moment is Palaye Royale. <br />
+        </p>
+        <div className='about-me-icons'>
+          <Tooltip 
+            placement="top"
+            title="Resume">
+            <Link href="https://bold.pro/my/kattschmidtt">
+              <PictureAsPdfIcon sx={{margin: '8px', color: 'black'}}/>
+            </Link>
+          </Tooltip>
+          <Tooltip 
+            placement="top"
+            title="Github">
+            <Link href="https://github.com/kattschmidtt">
+              <GitHubIcon sx={{margin: '8px', color: 'black'}}/>
+            </Link>
+          </Tooltip>
+
+          <Tooltip 
+            placement="top"
+            title="LinkedIn">
+            <Link href="https://www.linkedin.com/in/kattschmidt/">
+              <LinkedInIcon sx={{margin: '8px', color: 'black'}}/>
+            </Link>
+          </Tooltip>
+
+          <Tooltip 
+            placement="top"
+            title="Spotify Profile">
+            <Link href="https://open.spotify.com/user/katschmidt">
+              <LibraryMusicIcon sx={{margin: '8px', color: 'black'}}/>
+            </Link>
+          </Tooltip>
+        </div>
+      </div>
+    </div>
+    /* <Card sx={{ 
       mt: '10px', 
       mb: '10px', 
       fontFamily: 'Roboto Mono',
@@ -56,7 +102,7 @@ const AboutMeCard = () => {
           </Link>
         </Tooltip>
       </div>
-    </Card>
+    </Card> */
   )
 };
 

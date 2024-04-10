@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Alert, Divider } from '@mui/material'
 import axios from 'axios';
 import {UserContext} from '../context/userContext.js'
+import { FcGoogle } from "react-icons/fc";
+import AboutMeCard from '../components/AboutMe/AboutMeCard.jsx';
 
 const Login = () => {
 
@@ -39,6 +41,30 @@ const Login = () => {
   }
 
   return (
+    <section className='login-container'>
+      <AboutMeCard/>
+      <div className="form-container" style={{marginLeft: '12%'}}>
+        <form className='form login-form' onSubmit={loginUser}>
+          <h2 className='center'>Login</h2>
+          { error && <Alert severity='error'>{error}</Alert> }
+          <input type="email" placeholder='Email' name="email" value={userData.email} onChange={changeInputHandler} />
+          <input type="password" placeholder='Password' name='password' value={userData.password} onChange={changeInputHandler}/>
+          <button type='submit' className='btn-login'>Login</button>
+
+          <p className='login-center-socials'>
+            <span>Or</span>
+          </p>
+          <button className='btn-login' style={{border: '2px solid #5f7994', background: 'white'}}>
+            <FcGoogle/> &nbsp; Sign in with Gmail
+          </button>
+        </form>
+        <br/>
+        <small>Don't have an account?<Link to="/register"> Register</Link></small>
+      </div>
+
+    </section>
+    
+    /* 
     <section className="login">
       <div className="container">
         <h2 className='center'>Login</h2>
@@ -51,7 +77,7 @@ const Login = () => {
         </form>
         <small>Don't have an account?<Link to="/register"> Register</Link></small>
       </div>
-    </section>
+    </section> */
   )
 }
 

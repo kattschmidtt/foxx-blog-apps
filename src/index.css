@@ -86,7 +86,9 @@ section {
 }
 
 .btn-register, .btn-login {
-  display:inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
   width: fit-content;
   padding: 0.5rem 1rem;
@@ -320,4 +322,66 @@ input, select, textarea {
   display: grid;
   place-items: center;
   background-color: var(--color-bg);
+}
+
+/*== Login ==*/
+.login-container {
+  width: var(--form-width);
+  margin-inline: auto;
+  height: 29rem;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 25px;
+  margin-top: 15rem;
+}
+
+.login-center-socials {
+  width: 100%; 
+  text-align: center; 
+  border-bottom: 1px solid #bababa; 
+  line-height: 0.1em;
+  margin: 10px 0 20px; 
+  color: #bababa;
+}
+.login-center-socials span {
+  background:#fff; 
+  padding:0 10px; 
+}
+
+
+/*== About Me ==*/
+.about-me-card-container {
+  display: flex;
+  color: #fff;
+  flex-direction: column;
+  border-radius: 25px;
+  background-color: var(--color-bg);
+  margin-left: -11rem;
+  padding-top: 3rem;
+  width: var(--form-width);
+  background-image: url(./aboutMeCardBackground.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.about-me-header {
+  text-align: center;
+  color: #fff;
+  padding-top: 0.5rem;
+}
+.about-me-details {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.about-me-inner-card {
+  backdrop-filter: blur(10px);
+  margin: 2rem;
+  border-radius: 25px;
+  padding-bottom: 0.5rem;
+  overflow-y: auto;
+}
+.about-me-icons {
+  display: flex;
+  justify-content: center;
+  color: black;
 }
